@@ -7,7 +7,7 @@ import android.widget.BaseAdapter
 
 class GridAdapter<V, G: Gridable<V>> : BaseAdapter {
     companion object {
-        val HORIZONTAL = 1
+        val HORIZONTAL = 0
         val VERTICAL = 1
     }
 
