@@ -9,51 +9,54 @@
 
 ## How to use
  - It's simplfy,
-  - 1. implement you want to display grid item.
-    ex.)
-    ```
+   # 1: implement you want to display grid item.  
+   ## ex.)  
+      
+      
+    ~~~
     data class Gift(
 
-    var id: Int? = 0,
+     var id: Int? = 0,
 
-    var name: String? = null,
+     var name: String? = null,
 
-    var order: Int? = null,
+     var order: Int? = null,
 
     /*
       .... 
     */
 
-    ) : Serializable, Gridable<Gift> {
+     ) : Serializable, Gridable<Gift> {
 
-    override var value: Gift? = this
-    override var resourceId: Int = /* you set layout resource id */
+     override var value: Gift? = this
+     override var resourceId: Int = /* you set layout resource id */
 
-    override fun bind(itemView: View) {
-      /*... something ... */
+     override fun bind(itemView: View) {
+       /*... something ... */
+     }
+
+     override fun getInflatedView(context: Context): View {
+       return LayoutInflater.from(context).inflate(resourceId, null)
+     }
     }
-
-    override fun getInflatedView(context: Context): View {
-      return LayoutInflater.from(context).inflate(resourceId, null)
-    }
-}
-
-    ```
-
-    - 2. set grid adapter 
-    ```
+   ~~~  
+   # 2: Set Grid Adapter  
+    ## ex.)  
+    ~~~
       gridview.adapter = GridAdapter(context, items, null, GridAdapter.VERTICAL, columnNum, rowNum)
 
-    ```
-
-    - 3.(option) If empty item is custom layout,,,
-    ```
+    ~~~
+ 
+    # 3: (option) If empty item is custom layout...
+    ## ex.)  
+    ~~~
       gridview.adapter = GridAdapter(context, items, CustomGridEmpty(), GridAdapter.VERTICAL, columnNum, rowNum)
 
-    ```
-    ```
-    ##Custom Grid Empty class##
+    ~~~
+    
+    ## Custom Grid Empty class ##
 
+    ~~~
     class GridGiftEmpty<V> : GridEmpty<V>(null) {
         override var value: V? = null
         override var resourceId: Int = /* set your custom empty layout resource id */
@@ -67,4 +70,4 @@
         }
     }
 
-    ```
+    ~~~
