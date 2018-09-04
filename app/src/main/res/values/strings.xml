@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GridViewKit</string>
+    <string name="grid_item_empty">empty</string>
 </resources>
